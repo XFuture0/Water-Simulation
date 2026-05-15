@@ -48,4 +48,12 @@ public class InputManager : Singletons<InputManager>
         }
         return false;
     }
+    public float OnGetMouseX()
+    {
+        return Input.GetAxis("Mouse X");
+    }
+    public float OnGetMouseY()
+    {
+        return Input.GetAxis("Mouse Y");
+    }
 }

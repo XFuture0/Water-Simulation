@@ -7,7 +7,7 @@ public class BoatController : MonoBehaviour
 {
     [SerializeField] private float Speed = 10f;
     [SerializeField] private float AngularSpeed = 50f;
-    [SerializeField] private float maxForwardSpeed = 10f;
+    [SerializeField] private float MaxSpeed = 10f;
     private Rigidbody rb;
     private void Awake()
     {
@@ -15,26 +15,26 @@ public class BoatController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        float forwardInput = Input.GetKey(KeyCode.W) ? 1f : 0f;
-        float turnInput = 0f;
+        float ForwardInput = Input.GetKey(KeyCode.W) ? 1f : 0f;
+        float AngularInput = 0f;
         if (Input.GetKey(KeyCode.A))
         {
-            turnInput = -1f;
+            AngularInput = -1f;
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            turnInput = 1f;
+            AngularInput = 1f;
         }
-        if (forwardInput > 0)
+        if (ForwardInput > 0)
         {
-            if(rb.velocity.magnitude < maxForwardSpeed)
+            if(rb.velocity.magnitude < MaxSpeed)
             {
                 rb.AddForce(-transform.right * Speed, ForceMode.Force);
             }
         }
-        if (turnInput != 0)
+        if (AngularInput != 0)
         {
-            rb.AddTorque(transform.up * turnInput * AngularSpeed * Time.fixedDeltaTime, ForceMode.Force);
+            rb.AddTorque(transform.up * AngularInput * AngularSpeed * Time.fixedDeltaTime, ForceMode.Force);
         }
     }
 }
