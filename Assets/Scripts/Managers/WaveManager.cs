@@ -4,20 +4,32 @@ using UnityEngine;
 
 public class WaveManager : Singletons<WaveManager>
 {
-    public float amplitude;
-    public float frequency;
-    public float wavelength;
-    private float offect;
+    [SerializeField] private List<WaveData> WaveDatas;
     private WaveManager()
     {
         
     }
     private void Update()
     {
-        offect += Time.deltaTime * frequency;
+        foreach (var wave in WaveDatas)
+        {
+            wave.offect += Time.deltaTime * wave.frequency;
+        }
     }
-    public float GetWaveHeight(float x)
+    public float GetWaveHeight(Vector2 position)
     {
-        return amplitude * Mathf.Sin(x / wavelength + offect);
+        float MixedWave = 0;
+        foreach (var wave in WaveDatas)
+        {
+            if(wave.direction == WaveDirection.X)
+            {
+                MixedWave += wave.amplitude * Mathf.Sin(position.x / wave.wavelength + wave.offect + wave.wavebasepos);
+            }
+            else if(wave.direction == WaveDirection.Z)
+            {
+                MixedWave += wave.amplitude * Mathf.Sin(position.y / wave.wavelength + wave.offect + wave.wavebasepos);
+            }
+        }
+        return MixedWave;
     }
 }

@@ -15,7 +15,7 @@ public class SeaPlane : MonoBehaviour
         Vector3[] vertices = meshFilter.mesh.vertices;
         for(int i = 0; i < vertices.Length; i++)
         {
-            vertices[i].y = WaveManager.Instance.GetWaveHeight(vertices[i].x);
+            vertices[i].y = WaveManager.Instance.GetWaveHeight(new Vector2(vertices[i].x, vertices[i].z));
         }
         meshFilter.mesh.vertices = vertices;
         meshFilter.mesh.RecalculateNormals();
