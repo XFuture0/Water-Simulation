@@ -97,7 +97,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 677314043f568f34680b543f1838905a, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -233,7 +233,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c21a20ef904255b49b1cb6210ded097a, type: 2}
+  - {fileID: -876546973899608171, guid: 82bb020aaf3b53349aa07e2c64f1d7e2, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -138708,19 +138708,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WaveDatas:
   - direction: 1
-    amplitude: 0.25
+    amplitude: 0.15
     frequency: 2
     wavelength: 2.73
     wavebasepos: 1.25
     offect: 384.42383
   - direction: 1
-    amplitude: 0.25
+    amplitude: 0.15
     frequency: 2
     wavelength: 0.81
     wavebasepos: 0
     offect: 384.42383
   - direction: 0
-    amplitude: 0.5
+    amplitude: 0.25
     frequency: 1
     wavelength: 1.51
     wavebasepos: 0
