@@ -7,7 +7,7 @@ public class WaveManager : Singletons<WaveManager>
     public float amplitude;
     public float frequency;
     public float wavelength;
-    public float offect;
+    private float offect;
     private WaveManager()
     {
         
