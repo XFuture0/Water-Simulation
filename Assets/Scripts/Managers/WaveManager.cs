@@ -16,18 +16,47 @@ public class WaveManager : Singletons<WaveManager>
             wave.offect += Time.deltaTime * wave.frequency;
         }
     }
-    public float GetWaveHeight(Vector2 position)
+    public float GetWaveHeight(Vector2 position, bool IsAaccessible = false)
     {
         float MixedWave = 0;
-        foreach (var wave in WaveDatas)
+        if (!IsAaccessible)
         {
-            if(wave.direction == WaveDirection.X)
+            foreach (var wave in WaveDatas)
             {
-                MixedWave += wave.amplitude * Mathf.Sin(position.x / wave.wavelength + wave.offect + wave.wavebasepos);
+                if(!wave.IsVisible)
+                {
+                    continue;
+                }
+                if(wave.direction == WaveDirection.X)
+                {
+                    MixedWave += wave.amplitude * Mathf.Sin(position.x / wave.wavelength + wave.offect + wave.wavebasepos);
+                }
+                else if(wave.direction == WaveDirection.Z)
+                {
+                    MixedWave += wave.amplitude * Mathf.Sin(position.y / wave.wavelength + wave.offect + wave.wavebasepos);
+                }
             }
-            else if(wave.direction == WaveDirection.Z)
+        }
+        else
+        {
+            foreach (var wave in WaveDatas)
             {
-                MixedWave += wave.amplitude * Mathf.Sin(position.y / wave.wavelength + wave.offect + wave.wavebasepos);
+                if(!wave.IsVisible)
+                {
+                    continue;
+                }
+                if(!wave.IsAaccessible)
+                {
+                    continue;
+                }
+                if(wave.direction == WaveDirection.X)
+                {
+                    MixedWave += wave.amplitude * Mathf.Sin(position.x / wave.wavelength + wave.offect + wave.wavebasepos);
+                }
+                else if(wave.direction == WaveDirection.Z)
+                {
+                    MixedWave += wave.amplitude * Mathf.Sin(position.y / wave.wavelength + wave.offect + wave.wavebasepos);
+                }
             }
         }
         return MixedWave;

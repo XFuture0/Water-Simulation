@@ -5,6 +5,8 @@ using UnityEngine;
 public class WaveData
 {
     public WaveDirection direction;
+    public bool IsAaccessible;
+    public bool IsVisible;
     public float amplitude;
     public float frequency;
     public float wavelength;

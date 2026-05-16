@@ -14,7 +14,7 @@ public class Buoyant_Object : MonoBehaviour
     private void Update()
     {
         rb.AddForceAtPosition(Physics.gravity / BuoyantPointCount, transform.position, ForceMode.Acceleration);
-        float WaveHeight = SeaFace.position.y + WaveManager.Instance.GetWaveHeight(new Vector2(transform.position.x, transform.position.z));
+        float WaveHeight = SeaFace.position.y + WaveManager.Instance.GetWaveHeight(new Vector2(transform.position.x, transform.position.z), true);
         if(transform.position.y < WaveHeight)
         {
             float depthforce = Math.Clamp(WaveHeight - transform.position.y, 0, 1) * depthforceoffect;
